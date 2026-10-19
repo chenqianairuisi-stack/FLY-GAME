@@ -1,0 +1,25 @@
+delivery_mission:
+  ros__parameters:
+    drop_order: "1234"
+    home: [3.07, -2.38]
+    windows: [1.925, -0.3275, 1.925, -2.3725]
+    drop_points: [1.12, -0.15, 0.02, -0.67, 0.02, -2.03, 1.12, -2.53]
+    east_lane_x: 2.80
+    west_lane_x: 1.05
+    crossing_z: 0.74
+    observe_z: 1.27
+    drop_z: 0.55
+    land_z: 0.20
+    cruise_speed: 0.28
+    crossing_speed: 0.16
+    waypoint_timeout: 90.0
+    detection_timeout: 35.0
+    sensor_timeout: 3.0
+    lidar_enabled: true
+    # 0.70 m footprint, lower skid -0.20 m, upper rotor +0.34 m.
+    obstacle_margin: 0.025
+    report_dir: "demo_runs"
+delivery_detector:
+  ros__parameters:
+    required_frames: 3
+    min_inliers: 8

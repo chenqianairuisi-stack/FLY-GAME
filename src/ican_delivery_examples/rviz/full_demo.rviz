@@ -1,0 +1,129 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: rviz_common/Views
+  Name: Views
+Visualization Manager:
+  Class: ''
+  Displays:
+  - Class: rviz_default_plugins/Grid
+    Enabled: true
+    Name: Field Grid
+    Plane: XY
+    Plane Cell Count: 20
+    Reference Frame: odom
+    Value: true
+  - Class: rviz_default_plugins/TF
+    Enabled: true
+    Name: UAV TF
+    Show Arrows: false
+    Show Axes: true
+    Show Names: false
+    Value: true
+  - Class: rviz_default_plugins/Odometry
+    Enabled: false
+    Keep: 1
+    Name: UAV Odometry
+    Shape: Arrow
+    Topic:
+      Value: /uav/odom
+    Value: false
+  - Class: rviz_default_plugins/PointCloud2
+    Enabled: true
+    Name: UAV 3D Lidar Points
+    Color Transformer: AxisColor
+    Decay Time: 0.2
+    Position Transformer: XYZ
+    Selectable: true
+    Size (m): 0.025
+    Style: Points
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /uav/lidar/points
+    Value: true
+  - Class: rviz_default_plugins/Marker
+    Enabled: true
+    Name: UAV Collision Box
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /uav/collision_box
+    Value: true
+  - Class: rviz_default_plugins/Image
+    Enabled: true
+    Max Value: 1
+    Median window: 5
+    Min Value: 0
+    Name: UAV Camera Image
+    Normalize Range: true
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /uav/camera/image
+    Value: true
+  - Class: rviz_default_plugins/Path
+    Enabled: true
+    Name: Actual flight path
+    Color: 50; 255; 120
+    Line Style: Lines
+    Line Width: 0.025
+    Buffer Length: 1
+    Topic:
+      Value: /delivery/flight_path
+    Value: true
+  - Class: rviz_default_plugins/Path
+    Enabled: true
+    Name: Planned route
+    Color: 255; 180; 40
+    Line Style: Lines
+    Line Width: 0.025
+    Buffer Length: 1
+    Topic:
+      Value: /delivery/planned_path
+    Value: true
+  - Class: rviz_default_plugins/Marker
+    Enabled: true
+    Name: Mission progress
+    Topic:
+      Value: /delivery/mission_label
+    Value: true
+  - Class: rviz_default_plugins/Image
+    Enabled: true
+    Name: Window recognition
+    Topic:
+      Value: /delivery/debug/image
+      Reliability Policy: Best Effort
+    Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 32; 32; 32
+    Fixed Frame: odom
+    Frame Rate: 30
+  Name: root
+  Tools:
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Select
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 5
+      Focal Point:
+        X: 1.6
+        Y: -1.35
+        Z: 0.7
+      Name: Current View
+      Pitch: 0.65
+      Target Frame: odom
+      Yaw: 5.4
+Window Geometry:
+  Height: 900
+  Width: 1300
