@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<sdf version="1.6"><model name="throw_actuator"><static>true</static>
+<link name="anchor"/>
+<plugin name="delivery_throw" filename="libdelivery_throw.so"/>
+</model></sdf>

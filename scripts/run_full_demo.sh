@@ -13,8 +13,8 @@ export PYTHONNOUSERSITE=1
 export ROS2CLI_NO_DAEMON=1
 source scripts/setup_env.sh
 /usr/bin/python3 -c 'import cv2, numpy, cv_bridge; assert hasattr(cv2, "aruco"), "需要系统 python3-opencv 的 ArUco 模块"'
-if [[ ! -f install/ican_delivery_examples/lib/ican_delivery_examples/full_mission ]]; then
-    colcon build --symlink-install --packages-select ican_delivery_examples
+if [[ ! -f install/ican_delivery_examples/lib/ican_delivery_examples/full_mission || ! -f install/ican_delivery_throw/lib/libdelivery_throw.so ]]; then
+    colcon build --symlink-install --packages-up-to ican_delivery_examples
     source install/setup.bash
 fi
 exec ros2 launch ican_delivery_examples full_demo.launch.py "$@"

@@ -2,7 +2,7 @@
 <package format="3">
   <name>ican_delivery_examples</name>
   <version>0.1.0</version>
-  <description>Minimal user examples for the iCAN task 2 delivery simulator.</description>
+  <description>Full perception, flight, and ballistic delivery demo for the iCAN task 2 simulator.</description>
   <maintainer email="todo@example.com">iCAN Delivery Sim</maintainer>
   <license>Apache-2.0</license>
 
@@ -24,6 +24,8 @@
   <exec_depend>launch_ros</exec_depend>
   <exec_depend>ican_delivery_sim</exec_depend>
   <exec_depend>ican_delivery_flight_control</exec_depend>
+  <exec_depend>ican_delivery_throw</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

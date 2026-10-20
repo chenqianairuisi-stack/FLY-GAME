@@ -1,4 +1,5 @@
 import math
+from itertools import permutations
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
@@ -25,11 +26,12 @@ def test_velocity_and_payload_coordinates():
     assert payload_offset("black", math.pi) == pytest.approx((-.04, -.04))
 
 
-def test_route_crosses_openings_and_finishes_at_home():
+@pytest.mark.parametrize("order", ["".join(p) for p in permutations("1234")])
+def test_route_crosses_openings_and_finishes_at_home(order):
     cfg = yaml.safe_load((ROOT / "src/ican_delivery_examples/config/full_demo.yaml").read_text())["delivery_mission"]["ros__parameters"]
     for key in ("windows", "drop_points"):
         cfg[key] = list(zip(cfg[key][::2], cfg[key][1::2]))
-    route = make_route(cfg, parse_order("3142"))
+    route = make_route(cfg, parse_order(order))
     world = ET.parse(ROOT / "binary_install/share/ican_delivery_sim/worlds/delivery_task2.world")
     windows = [world.find(f".//model[@name='window_{i}']") for i in (1, 2)]
     previous = [*cfg["home"], .2, math.pi]
@@ -52,4 +54,12 @@ def test_route_crosses_openings_and_finishes_at_home():
         previous = target
     assert crossed == [1, 2]
     assert route[-1]["target"][:3] == pytest.approx([*cfg["home"], cfg["land_z"]])
-    assert [s["color"] for s in route if s["kind"] == "drop"] == parse_order("3142")
+    assert [s["color"] for s in route if s["kind"] == "drop"] == parse_order(order)
+    third = next(s for s in route if s["name"] == "drop_3_approach")
+    fourth = next(s for s in route if s["name"] == "drop_4_approach")
+    assert third["target"][3] == fourth["target"][3] == 0.
+    assert third["target"][2] > fourth["target"][2]
+    assert next(s for s in route if s["name"] == "drop_3")["detect"] == "window_2"
+    fourth_index = next(i for i,s in enumerate(route) if s["name"] == "drop_4")
+    assert [s["name"] for s in route[fourth_index+1:]] == ["return_home", "landing"]
+

@@ -8,10 +8,19 @@ delivery_mission:
     west_lane_x: 1.05
     crossing_z: 0.74
     observe_z: 1.27
-    drop_z: 0.55
+    # Release heights and horizontal lead for ballistic throws.
+    throw_z: 1.05
+    drop4_throw_z: 0.74
+    # Match throw lead to 0.5 m/s flight so cubes clear the moving tray.
+    throw_lead: 0.22
     land_z: 0.20
-    cruise_speed: 0.28
-    crossing_speed: 0.16
+    # Limit actual 3D flight speed, including ascent/descent, to 0.5 m/s.
+    # Measured simulator displacement is 2x the velocity command.
+    max_speed: 0.5
+    sim_velocity_gain: 2.0
+    delivery_speed: 0.25
+    cruise_speed: 0.25
+    crossing_speed: 0.25
     waypoint_timeout: 90.0
     detection_timeout: 35.0
     sensor_timeout: 3.0

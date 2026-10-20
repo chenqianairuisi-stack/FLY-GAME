@@ -18,7 +18,7 @@ setup(
     zip_safe=True,
     maintainer="iCAN Delivery Sim",
     maintainer_email="todo@example.com",
-    description="Minimal user examples for the iCAN task 2 delivery simulator.",
+    description="Full perception, flight, and ballistic delivery demo for the iCAN task 2 simulator.",
     license="Apache-2.0",
     entry_points={
         "console_scripts": [
